@@ -245,7 +245,6 @@ export default function Home({ searchParams }: any) {
       >
         Extended Promise Toast
       </button>
-      
 
       <button
         data-testid="extended-promise-error"
@@ -315,9 +314,14 @@ export default function Home({ searchParams }: any) {
       </button>
       {showAutoClose ? <div data-testid="auto-close-el" /> : null}
       {showDismiss ? <div data-testid="dismiss-el" /> : null}
+      <button data-testid="show-close-all" className="button" onClick={() => toast('My Custom Cancel Button', {})}>
+        Render Custom Cancel Button
+      </button>
+
       <Toaster
         offset={32}
         position={searchParams.position || 'bottom-right'}
+        showClearAll={searchParams.clearAll === '1' ? true : undefined}
         toastOptions={{
           actionButtonStyle: { backgroundColor: 'rgb(219, 239, 255)' },
           cancelButtonStyle: { backgroundColor: 'rgb(254, 226, 226)' },

@@ -142,6 +142,9 @@ export interface ToasterProps {
   swipeDirections?: SwipeDirection[];
   icons?: ToastIcons;
   containerAriaLabel?: string;
+
+  showClearAll?: boolean;
+  clearAllButton?: React.ComponentType<{ onClick: () => void }>;
 }
 
 export type SwipeDirection = 'top' | 'right' | 'bottom' | 'left';

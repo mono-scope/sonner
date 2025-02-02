@@ -314,6 +314,40 @@ html[dir='rtl'],
 
 [data-sonner-toast][data-expanded='false'][data-front='false'][data-styled='true'] > * {
   opacity: 0;
+  pointer-events: none;
+}
+
+:where([data-sonner-clear-all-item]) {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 400ms;
+}
+
+:where([data-sonner-clear-all-button]) {
+  all: unset;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial,
+    Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 11px;
+  font-weight: 500;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  padding-top: 12px;
+  padding-bottom: 4px;
+}
+
+:where([data-sonner-clear-all-item][data-expanded='false']) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+:where([data-sonner-toast][data-expanded='false'][data-front='false'][data-styled='true']) > * {
+  opacity: 0;
 }
 
 [data-sonner-toast][data-visible='false'] {

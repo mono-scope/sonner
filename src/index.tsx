@@ -606,6 +606,8 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
     gap = GAP,
     icons,
     containerAriaLabel = 'Notifications',
+    clearAllButton,
+    showClearAll,
   } = props;
   const [toasts, setToasts] = React.useState<ToastT[]>([]);
   const possiblePositions = React.useMemo(() => {
@@ -768,6 +770,7 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
       aria-relevant="additions text"
       aria-atomic="false"
       suppressHydrationWarning
+      className="relative"
     >
       {possiblePositions.map((position, index) => {
         const [y, x] = position.split('-');
@@ -866,6 +869,15 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
                   swipeDirections={props.swipeDirections}
                 />
               ))}
+            {showClearAll && (
+              <li data-expanded={expanded && toasts.length > 1 && !expand} data-sonner-clear-all-item>
+                {React.createElement(clearAllButton || ClearAllButton, {
+                  onClick: () => {
+                    toasts.forEach((toast) => ToastState.dismiss(toast.id));
+                  },
+                })}
+              </li>
+            )}
           </ol>
         );
       })}
@@ -875,3 +887,9 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
 
 export { toast, Toaster, type ExternalToast, type ToastT, type ToasterProps, useSonner };
 export { type ToastClassnames, type ToastToDismiss, type Action } from './types';
+
+const ClearAllButton: React.FC<{ onClick: () => void }> = ({ onClick }) => (
+  <button data-sonner-clear-all-button="" onClick={onClick}>
+    Clear all
+  </button>
+);
