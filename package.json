@@ -1,5 +1,5 @@
 {
-  "name": "sonner",
+  "name": "@monoscope/sonner",
   "version": "2.0.3",
   "description": "An opinionated toast component for React.",
   "exports": {
